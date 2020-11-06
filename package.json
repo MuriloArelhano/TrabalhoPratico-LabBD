@@ -1,0 +1,20 @@
+{
+  "name": "trabalhopratico",
+  "version": "1.0.0",
+  "description": "Trabalho prático de labBD, bem chatinho, mas legal.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon ./src/app.js"
+  },
+  "author": "Murilo Esteca Arelhano, David Gama Serrate, Marcus Vinicius Ferreira",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "pg": "^8.4.2"
+  }
+}
