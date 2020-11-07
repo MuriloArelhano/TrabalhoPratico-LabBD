@@ -1,128 +1,180 @@
-CREATE TABLE candidato (
-    id INT NULL,
-    nomeUrna TEXT NULL,
-    numero INT NULL,
-    idCandidatoSuperior INT NULL,
-    nomeCompleto TEXT NULL,
-    descricaoSexo TEXT NULL,
-    dataDeNascimento DATE NULL,
-    tituloEleitor INT NULL,
-    cpf TEXT NOT NULL,
-    descricaoEstadoCivil TEXT NULL,
-    descricaoCorRaca TEXT NULL,
-    descricaoSituacao TEXT NULL,
-    nacionalidade TEXT NULL,
-    grauInstrucao TEXT NULL,
-    ocupacao TEXT NULL,
-    gastoCampanha1T FLOAT NULL,
-    gastoCampanha2T INT NULL,
-    sgUfNascimento TEXT NULL,
-    nomeMunicipioNascimento TEXT NULL,
-    localCandidatura TEXT NULL,
-    ufCandidatura TEXT NULL,
-    ufSuperiorCandidatura TEXT NULL,
-    dataUltimaAtualizacao DATE NULL,
-    fotoUrl TEXT NULL,
-    fotoDataUltimaAtualizacao TEXT NULL,
-    descricaoTotalizacao TEXT NULL,
-    nomeColigacao TEXT NULL,
-    composicaoColigacao TEXT NULL,
-    numeroProcessoDrap INT NULL,
-    numeroProcessoDrapEncrypt TEXT NULL,
-    numeroProcesso INT NULL,
-    numeroProcessoEncrypt TEXT NULL,
-    numeroProcessoPrestContas TEXT NULL,
-    numeroProcessoPrestContasEncrypt TEXT NULL,
-    numeroProtocolo TEXT NULL,
-    totalDeBens FLOAT NULL,
-    substituto TEXT NULL,
-    motivos TEXT NULL,
-    codigoSituacaoCandidato INT NULL,
-    descricaoSituacaoCandidato TEXT NULL,
-    st_SUBSTITUIDO BOOL NULL,
-    descricaoNaturalidade TEXT NULL,
-    st_MOTIVO_AUSENCIA_REQUISITO BOOL NULL,
-    st_MOTIVO_CONDUTA_VEDADA BOOL NULL,
-    cnpjcampanha INT NULL,
-    gastoCampanha FLOAT NULL,
-    st_MOTIVO_ABUSO_PODER BOOL NULL,
-    st_MOTIVO_COMPRA_VOTO BOOL NULL,
-    ds_MOTIVO_OUTROS TEXT NULL,
-    st_MOTIVO_GASTO_ILICITO BOOL NULL,
-    st_MOTIVO_IND_PARTIDO BOOL NULL,
-    st_MOTIVO_FICHA_LIMPA BOOL NULL,
-    st_DIVULGA_ARQUIVOS BOOL NULL,
-    st_DIVULGA_BENS BOOL NULL,
-    st_DIVULGA BOOL NULL,
-    st_REELEICAO BOOL NULL
+-- IMPORTANTE: A convenção da forma de escrita dos nomes das colunas foram feitas assim, por conta da aplicação!
+drop schema if exists trabalhofinal cascade;
+
+create schema trabalhofinal;
+set search_path to trabalhofinal;
+
+create table candidato (
+    id numeric null,
+    nomeUrna text null,
+    numero numeric null,
+    idCandidatoSuperior numeric null,
+    nomeCompleto text null,
+    descricaoSexo text null,
+    dataDeNascimento DATE null,
+    tituloEleitor numeric null,
+    cpf text not null,
+    descricaoEstadoCivil text null,
+    descricaoCorRaca text null,
+    descricaoSituacao text null,
+    nacionalidade text null,
+    grauInstrucao text null,
+    ocupacao text null,
+    vices text null,
+    gastoCampanha1T float null,
+    gastoCampanha2T numeric null,
+    sgUfNascimento text null,
+    nomeMunicipioNascimento text null,
+    localCandidatura text null,
+    ufCandidatura text null,
+    ufSuperiorCandidatura text null,
+    dataUltimaAtualizacao DATE null,
+    fotoUrl text null,
+    fotoDataUltimaAtualizacao text null,
+    descricaoTotalizacao text null,
+    nomeColigacao text null,
+    composicaoColigacao text null,
+    numeroProcessoDrap numeric null,
+    numeroProcessoDrapEncrypt text null,
+    numeroProcesso numeric null,
+    numeroProcessoEncrypt text null,
+    numeroProcessoPrestContas text null,
+    numeroProcessoPrestContasEncrypt text null,
+    numeroProtocolo text null,
+    totalDeBens float null,
+    substituto text null,
+    motivos text null,
+    codigoSituacaoCandidato numeric null,
+    descricaoSituacaoCandidato text null,
+    st_SUBSTITUIDO BOOL null,
+    descricaoNaturalidade text null,
+    st_MOTIVO_AUSENCIA_REQUISITO BOOL null,
+    st_MOTIVO_CONDUTA_VEDADA BOOL null,
+    cnpjcampanha numeric null,
+    gastoCampanha float null,
+    st_MOTIVO_ABUSO_PODER BOOL null,
+    st_MOTIVO_COMPRA_VOTO BOOL null,
+    ds_MOTIVO_OUTROS text null,
+    st_MOTIVO_GASTO_ILICITO BOOL null,
+    st_MOTIVO_IND_PARTIDO BOOL null,
+    st_MOTIVO_FICHA_LIMPA BOOL null,
+    st_DIVULGA_ARQUIVOS BOOL null,
+    st_DIVULGA_BENS BOOL null,
+    st_DIVULGA BOOL null,
+    st_REELEICAO BOOL null
 );
 
-CREATE TABLE cargo(
-    codigo NUMERIC NOT NULL,
-    id_candidato NUMERIC NULL,
-    sigla TEXT NULL,
-    nome TEXT NULL,
-    cod_superior NUMERIC NULL,
-    titular BOOL NULL,
-    contagem NUMERIC NULL
+
+
+create table cargo(
+    id_candidato numeric null,
+    codigo numeric not null,
+    sigla text null,
+    nome text null,
+    codSuperior numeric null,
+    titular BOOL null,
+    contagem numeric null
 );
 
-CREATE TABLE bens(
-    id_candidato NUMERIC NULL,
-    ordem INT NULL,
-    descricao TEXT NULL,
-    descricao_de_tipo_de_bem TEXT NULL,
-    valo FLOAT NULL,
-    data_utima_atualizacao DATE NULL
+
+create table bens(
+    id_candidato numeric null,
+    ordem numeric null,
+    descricao text null,
+    descricaoDeTipoDeBem text null,
+    valo float null,
+    dataUltimaAtualizacao DATE null
 );
 
-CREATE TABLE partido(
-    id_candidato NUMERIC NULL,
-    numero INT NULL,
-    sigla TEXT NULL,
-    nome TEXT NULL
+
+
+create table partido(
+    id_candidato numeric null,
+    numero numeric null,
+    sigla text null,
+    nome text null
 );
 
-CREATE TABLE eleicao(
-    id_candidato NUMERIC NULL,
-    id NUMERIC NULL,
-    sigla_UF TEXT NULL,
-    localidade_sg_ue TEXT NULL,
-    ano INT NULL,
-    codigo NUMERIC NULL,
-    nome_eleicao TEXT NULL,
-    tipo_eleicao TEXT NULL,
-    turno INT NULL,
-    tipo_abrangencia TEXT NULL,
-    data_eleicao DATE NULL,
-    cod_situcao_eleicao INT NULL,
-    descricao_situacao_eleicao TEXT NULL,
-    descricao_eleicao TEXT NULL
+
+create table eleicao(
+    id_candidato numeric null,
+    id numeric null,
+    siglaUF text null,
+    localidadeSgUe text null,
+    ano numeric null,
+    codigo numeric null,
+    nomeEleicao text null,
+    tipoEleicao text null,
+    turno numeric null,
+    tipoAbrangencia text null,
+    dataEleicao DATE null,
+    codSituacaoEleicao numeric null,
+    descricaoSituacaoEleicao text null,
+    descricaoEleicao text null
 );
 
-CREATE TABLE email(
-    id_candidato NUMERIC NULL,
-    email TEXT NULL
+
+
+create table email(
+    id_candidato numeric null,
+    email text null
 );
 
-CREATE TABLE site(
-    id_candidato NUMERIC NULL,
-    site_url TEXT NULL
+
+
+create table site(
+    id_candidato numeric null,
+    siteUrl text null
 );
 
-CREATE TABLE arquivo(
-    id_candidato NUMERIC NULL,
-    id_arquivo NUMERIC NULL,
-    nome TEXT NULL,
-    url TEXT NULL,
-    tipo TEXT NULL,
-    cod_tipo TEXT NULL,
-    full_file_path TEXT NULL,
-    file_input_stream TEXT NULL,
-    file_byte_array TEXT NULL
+
+
+create table arquivo(
+    id_candidato numeric null,
+    idArquivo numeric null,
+    nome text null,
+    url text null,
+    tipo text null,
+    codTipo text null,
+    fullFilePath text null,
+    fileInputStream text null,
+    fileByteArray text null
 );
 
-CREATE TABLE eleicao_anterior(
-    id_candidato NUMERIC NULL,
-  
+
+create table eleicao_anterior(
+    id_candidato numeric null,
+    id text null,
+    nrAno numeric null, 
+    nomeUrna text null,
+    nomeCandidato text null,
+    idEleicao text null,
+    sgUe text null,
+    local text null,
+    cargo text null,
+    partido text null,
+    situacaoTotalizacao text null,
+    txLink text null
+
 );
+
+alter table candidato add primary key (id);
+
+alter table cargo add constraint fk_candidato_cargo foreign key (id_candidato) references candidato(id);
+
+alter table bens add constraint fk_candidato_bens foreign key (id_candidato) references candidato(id);
+
+alter table partido add constraint fk_candidato_partido foreign key (id_candidato) references candidato(id);
+
+alter table eleicao add primary key (id);
+alter table eleicao add constraint fk_candidato_eleicao foreign key (id_candidato) references candidato(id);
+
+alter table email add constraint fk_candidato_email foreign key (id_candidato) references candidato(id);
+
+alter table site add constraint fk_candidato_site foreign key (id_candidato) references candidato(id);
+
+alter table arquivo add primary key (idArquivo);
+alter table arquivo add constraint fk_candidato_arquivo foreign key (id_candidato) references candidato(id);
+
+alter table eleicao_anterior add primary key (id);
+alter table eleicao_anterior add constraint fk_candidato_eleicao_anterior foreign key (id_candidato) references candidato(id);

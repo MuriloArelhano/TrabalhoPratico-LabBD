@@ -13,6 +13,24 @@
 
     <main class="container mt-5">
         <section>
+            <form action="/import/structure" method="POST" class="mb-3">
+                <h1>Criar a estrutura do banco</h1>
+                <div>
+                    <label for="btn-import-data" class="w-100">Importe os dados SQL, para construção do banco</label>
+                    <button id="btn-import-data" class="btn btn-primary" type="submit">Montar Banco</button>
+                </div>
+            </form>
+            <% if(errorMessageStruture){ %>
+            <div class="alert alert-danger">
+                <p>Ocorreu um erro inesperado: <%= errorMessageStruture %> </p>
+            </div>
+            <% } %>
+            <% if(successMessageStruture){ %>
+            <div class="alert alert-primary">
+                <p><%= successMessageStruture %> </p>
+            </div>
+            <% } %>
+
             <form action="/import/all-data" method="POST" class="mb-3">
                 <h1>Importe os dados</h1>
                 <div>
@@ -20,18 +38,22 @@
                     <button id="btn-import-data" class="btn btn-primary" type="submit">Importar</button>
                 </div>
             </form>
-            <% if(errorMessage){ %>
+
+            <% if(errorMessageImport){ %>
             <div class="alert alert-danger">
-                <p>Ocorreu um erro inesperado: <%= errorMessage %> </p>
+                <p>Ocorreu um erro inesperado: <%= errorMessageImport %> </p>
+            </div>
+            <% } %>
+            <% if(successMessageImport){ %>
+            <div class="alert alert-primary">
+                <p><%= successMessageImport %> </p>
             </div>
             <% } %>
 
             <div>
                 <h1>Consultas da lista</h1>
             </div>
-            <% for(let item of filesNameList) { %>
-            <div>Item: <%= item %></div>
-            <% } %>
+
         </section>
     </main>
 
