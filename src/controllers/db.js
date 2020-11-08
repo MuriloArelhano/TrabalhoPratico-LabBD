@@ -2,32 +2,26 @@ const path = require('path')
 const fs = require('fs')
 const db = require('../config/configApp')
 
-exports.insertStructure = (req, res) => {
+exports.insertStructure = (req, res, next) => {
     fs.readFile(path.join(__dirname, '../../db', 'estrutura.sql'), (err, data) => {
         if (err) {
             return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                errorMessageStruture: err,
-                errorMessageImport: null,
-                successMessageStruture: null,
-                successMessageImport: null
+                resultStatus: 'StructureDatebaseError',
+                errorMessage: err
             })
         }
         else {
             db.query(data.toString())
                 .then(resp => {
                     return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                        errorMessageStruture: null,
-                        errorMessageImport: null,
-                        successMessageStruture: 'Estrutura importada com sucesso.',
-                        successMessageImport: ''
+                        resultStatus: 'StructureDatebaseSucess',
+                        errorMessage: null
                     })
                 })
                 .catch(err => {
                     return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                        errorMessageStruture: err,
-                        errorMessageImport: null,
-                        successMessageStruture: null,
-                        successMessageImport: null
+                        resultStatus: 'StructureDatebaseError',
+                        errorMessage: err
                     })
                 })
 
@@ -37,23 +31,19 @@ exports.insertStructure = (req, res) => {
 
 }
 
-exports.deletAllData = (req, res) => {
+exports.deletAllData = (req, res, next) => {
 
     db.query('drop schema trabalhofinal')
         .then(resp => {
             return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                errorMessageStruture: null,
-                errorMessageImport: null,
-                successMessageStruture: '',
-                successMessageImport: ''
+                errorType: null,
+                errorMessage: null
             })
         })
         .catch(err => {
             return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                errorMessageStruture: err,
-                errorMessageImport: null,
-                successMessageStruture: null,
-                successMessageImport: null
+                errorType: 'StructureDatebase',
+                errorMessage: err
             })
         })
 

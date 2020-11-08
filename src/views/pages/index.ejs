@@ -16,18 +16,18 @@
             <form action="/import/structure" method="POST" class="mb-3">
                 <h1>Criar a estrutura do banco</h1>
                 <div>
-                    <label for="btn-import-data" class="w-100">Importe os dados SQL, para construção do banco</label>
+                    <label for="btn-import-data" class="w-100">Importe os dados SQL, para construção do banco (essa
+                        funçao exluirá o banco e o montara do zero novamente)</label>
                     <button id="btn-import-data" class="btn btn-primary" type="submit">Montar Banco</button>
                 </div>
             </form>
-            <% if(errorMessageStruture){ %>
+            <% if(resultStatus == 'StrutureDatabaseError'){ %>
             <div class="alert alert-danger">
-                <p>Ocorreu um erro inesperado: <%= errorMessageStruture %> </p>
+                <p>Ocorreu um erro inesperado, <%= errorMessage %> </p>
             </div>
-            <% } %>
-            <% if(successMessageStruture){ %>
+            <%} if(resultStatus == 'StructureDatebaseSucess'){ %>
             <div class="alert alert-primary">
-                <p><%= successMessageStruture %> </p>
+                <p>Banco de dados criado com sucesso</p>
             </div>
             <% } %>
 
@@ -39,20 +39,15 @@
                 </div>
             </form>
 
-            <% if(errorMessageImport){ %>
+            <% if(resultStatus == 'ImportDataError'){ %>
             <div class="alert alert-danger">
-                <p>Ocorreu um erro inesperado: <%= errorMessageImport %> </p>
+                <p>Ocorreu um erro inesperado, <%= errorMessage %> </p>
             </div>
-            <% } %>
-            <% if(successMessageImport){ %>
+            <%} if(resultStatus == 'ImportDataSucess'){ %>
             <div class="alert alert-primary">
-                <p><%= successMessageImport %> </p>
+                <p>Os dados foram importados com sucesso</p>
             </div>
             <% } %>
-
-            <div>
-                <h1>Consultas da lista</h1>
-            </div>
 
         </section>
     </main>

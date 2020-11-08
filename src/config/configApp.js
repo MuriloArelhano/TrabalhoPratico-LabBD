@@ -15,16 +15,24 @@ const dbConfig = {
 const client = new pg.Client(dbConfig)
 module.exports = client
 
+// Import das rotas e controllers
 const indexRouter = require('../router/index')
+const errorController = require('../controllers/error')
 
 module.exports = function initApp(callback) {
     const app = express()
-    
+
     app.set('view engine', 'ejs');
     app.set('views', path.join(__dirname, '/'));
+
     app.use(express.static(path.join(__dirname, '../public')))
 
     app.use('/', indexRouter)
+    app.use(errorController.error404)
+
+    app.use((err, req, res, next)=>{
+        console.log('deu pau')
+    })
 
     client.connect()
         .then(resp => {
