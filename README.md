@@ -23,7 +23,7 @@ Após isso poderá ver que as seguintes mensagens
 - Banco de dados inicializado com sucesso 🏛🎲, na porta 5432
 - Servidor iniciado com sucesso 🚀🎲, na porta 3000
 
-Caso contrário algo entá errado com a configuração do postgres com docker ou então com os módulos do NojeJs, cheque novamentes as informações acima.
+Caso contrário algo está errado com a configuração do postgres com docker ou então com os módulos do NojeJs, cheque novamentes as informações acima.
 
 **_Obs: Lembre-se de ter os dados dos candidatos na para "data" da raiz do projeto. Por questões de optimização os arquivos estão reduzidos._**
 
