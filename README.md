@@ -2,6 +2,8 @@
 
 ## Como Executar
 
+Feito por: Murilo Esteca Arelhano, David Gama Serrate, Marcus Vinicius Ferreira
+
 **_Obs: Certifiqui-se que tem o docker instalado em sua máquina. O usuáio postgres já está configurado no arquivo docker-compose e devidamente inicializado na aplicação. Caso mude o usuário do arquivo docker, a aplicação pode parar._**
 
 > Senha do user postgres: trabalhopratico
