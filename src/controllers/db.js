@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const db = require('../config/configApp')
+const db = require('../app')
 
 exports.insertStructure = (req, res, next) => {
     fs.readFile(path.join(__dirname, '../../db', 'estrutura.sql'), (err, data) => {

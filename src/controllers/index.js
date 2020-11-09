@@ -28,6 +28,14 @@ exports.importAllData = async (request, response, next) => {
             let candidato = utils.deleteCandidatoInfos(currentFileJson)
             await candidatoModel.insertNewCandidato(candidato)
             await candidatoModel.insertNewCargo(candidato.id, currentFileJson.cargo)
+            await candidatoModel.insertNewbens(candidato.id, currentFileJson.bens)
+            await candidatoModel.insertNewPartido(candidato.id, currentFileJson.partido)
+            await candidatoModel.insertNewEleicao(candidato.id, currentFileJson.eleicao)
+            await candidatoModel.insertNewEmail(candidato.id, currentFileJson.emails)
+            await candidatoModel.insertNewSite(candidato.id, currentFileJson.sites)
+            await candidatoModel.insertNewArquivo(candidato.id, currentFileJson.arquivos)
+            await candidatoModel.insertNewEleicãoAnterior(candidato.id, currentFileJson.eleicoesAnteriores)
+            await candidatoModel.insertNewEleicãoVices(candidato.id, currentFileJson.vices)
         } catch (e) {
             // Renderiza a pagina de erros
             return response.render(path.join(__dirname, '../views/pages/index.ejs'), {

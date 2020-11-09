@@ -82,8 +82,28 @@ create table bens(
     ordem numeric null,
     descricao text null,
     descricaoDeTipoDeBem text null,
-    valo float null,
+    valor float null,
     dataUltimaAtualizacao DATE null
+);
+
+create table vices(
+    id_candidato numeric null,
+    nomeColigacao text null,
+    composicaoColigacao text null,
+    stRegistro text null,
+    situacaoCandidato text null,
+    urlFoto text null,
+    sg_PARTIDO text null,
+    nm_URNA text null,
+    nm_CANDIDATO text null,
+    sq_ELEICAO numeric null,
+    sq_CANDIDATO_SUPERIOR text null,
+    nr_CANDIDATO numeric null,
+    ds_CARGO text null,
+    nm_PARTIDO text null,
+    sq_CANDIDATO numeric null,
+    sg_UE text null,
+    dt_ULTIMA_ATUALIZACAO date null
 );
 
 
@@ -164,9 +184,10 @@ alter table cargo add constraint fk_candidato_cargo foreign key (id_candidato) r
 
 alter table bens add constraint fk_candidato_bens foreign key (id_candidato) references candidato(id);
 
+alter table vices add constraint fk_candidato_vices foreign key (id_candidato) references candidato(id);
+
 alter table partido add constraint fk_candidato_partido foreign key (id_candidato) references candidato(id);
 
-alter table eleicao add primary key (id);
 alter table eleicao add constraint fk_candidato_eleicao foreign key (id_candidato) references candidato(id);
 
 alter table email add constraint fk_candidato_email foreign key (id_candidato) references candidato(id);
