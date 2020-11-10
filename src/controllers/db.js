@@ -3,7 +3,7 @@ const fs = require('fs')
 const db = require('../app')
 
 exports.insertStructure = (req, res, next) => {
-    fs.readFile(path.join(__dirname, '../../db', 'estrutura.sql'), (err, data) => {
+    fs.readFile(path.join(__dirname, '../../estrutura db', 'estrutura.sql'), (err, data) => {
         if (err) {
             return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
                 resultStatus: 'StructureDatebaseError',
