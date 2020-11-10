@@ -31,22 +31,3 @@ exports.insertStructure = (req, res, next) => {
 
 }
 
-exports.deletAllData = (req, res, next) => {
-
-    db.query('drop schema trabalhofinal')
-        .then(resp => {
-            return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                errorType: null,
-                errorMessage: null
-            })
-        })
-        .catch(err => {
-            return res.render(path.join(__dirname, '../views/pages/index.ejs'), {
-                errorType: 'StructureDatebase',
-                errorMessage: err
-            })
-        })
-
-
-
-}

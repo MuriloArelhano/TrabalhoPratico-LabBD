@@ -47,7 +47,6 @@ exports.importAllData = async (request, response, next) => {
         
     }
 
-
     return response.render(path.join(__dirname, '../views/pages/index.ejs'), {
         resultStatus: 'ImportDataSucess',
         errorMessage: null
