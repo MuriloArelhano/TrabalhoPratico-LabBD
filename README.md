@@ -4,7 +4,7 @@
 
 Feito por: Murilo Esteca Arelhano, David Gama Serrate, Marcus Vinicius Ferreira
 
-Video no Youtube, https://youtu.be/K5xS92U2jxA
+Video no Youtube, https://youtu.be/Q0NMFSRYhNM
 
 **_Obs: Certifiqui-se que tem o docker instalado em sua máquina. O usuáio postgres já está configurado no arquivo docker-compose e devidamente inicializado na aplicação. Caso mude o usuário do arquivo docker, a aplicação pode parar._**
 
